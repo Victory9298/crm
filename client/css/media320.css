@@ -1,0 +1,21 @@
+@media (max-width:320px) {
+  .header__form {
+    display: none;
+  }
+
+  .header {
+    position: fixed;
+  }
+
+  .header__container {
+    padding-top: 8px;
+    padding-bottom: 3px;
+    justify-content: center;
+  }
+
+  .logo__img {
+    width: 24x;
+    height: 24px;
+  }
+
+}
