@@ -1,0 +1,124 @@
+@media (max-width:1024px) {
+
+/* .display-info__item.display-info__item--create {
+  padding-left: 100px
+} */
+
+.display-info__item--create::before {
+  content: 'создания';
+  position: absolute;
+  right: 80px;
+  top: 15px;
+  margin-right: 13px;
+}
+
+.create__span.sort-down {
+  display: inline-block;
+  width: 7px;
+  height: 100%;
+  position: absolute;
+  right: 80px;
+  top: 15px;
+  background-image: url(../img/arrow-down.svg);
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.change__span.sort-down {
+  display: inline-block;
+  width: 7px;
+  height: 100%;
+  position: absolute;
+  right: 65px;
+  top: 15px;
+  background-image: url(../img/arrow-down.svg);
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.create__span.sort-up {
+  display: inline-block;
+  width: 7px;
+  height: 100%;
+  position: absolute;
+  right: 30px;
+  top: 14px;
+  background-image: url('../img/arrow-up.svg');
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.change__span.sort-up {
+  display: inline-block;
+  width: 7px;
+  height: 100%;
+  position: absolute;
+  right: 5px;
+  top: 14px;
+  background-image: url('../img/arrow-up.svg');
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.display-info__item--change::before {
+  content: 'изменения';
+  position: absolute;
+  right: 65px;
+  top: 15px;
+  margin-right: 13px;
+}
+
+.display-info__item--change {
+  padding-left: 0;
+}
+
+.display-info__item.display-info__item--contacts {
+  padding-left: 0;
+}
+
+.clients__full-name {
+  padding-left: 25px;
+}
+
+.client__id {
+  padding-left: 14px;
+  padding-right: 14px;
+}
+
+.display-info__item--id,
+.display-info__item--name {
+  padding-left: 30px;
+}
+
+.clients__full-name {
+  max-width: 208px;
+}
+
+.clients__created {
+  padding-left: 5px;
+}
+
+.display-info__item--create {
+  padding-left: 20px;
+}
+
+.clients__changed {
+  padding-left: 15px;
+}
+
+.clients__contacts {
+  padding-left: 10px;
+}
+
+.clients__actions {
+  padding-left: 50px;
+}
+
+.display-info__item--actions {
+  padding-left: 90px;
+}
+
+#plus__btn {
+  height: 16px;
+}
+}

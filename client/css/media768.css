@@ -1,0 +1,76 @@
+@media (max-width:768px) {
+
+  .clients__full-name {
+    min-width: 190px;
+  }
+
+  .display-info__item--create {
+    padding-right: 17px;
+  }
+
+  .display-info__item--create::before, .create__span.sort-down {
+    right: 27px;
+  }
+
+  .clients__created, .clients__changed {
+    width: calc(10% - 1px);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .clients__created {
+    padding-left: 5px;
+
+  }
+
+  .clients__changed {
+    padding-left: 25px;
+  }
+
+  .clients__contacts {
+    padding-left: 50px;
+    margin-top: 0;
+    margin-bottom: 0;
+    max-width: 160px;
+  }
+
+  .display-info__item--change {
+    padding-right: 17px;
+  }
+
+  .display-info__item--change::before, .change__span.sort-down {
+    right: 3px;
+  }
+
+  .client__id {
+    align-items: inherit;
+    padding-top: 3px;
+  }
+
+  .clients__actions {
+    display: flex;
+    flex-direction: column;
+    padding-left: 40px;
+    align-items:initial
+  }
+
+  .display-info__item--id {
+    padding-left: 10px;
+  }
+
+  .display-info__item--name  {
+    padding-left: 35px;
+  }
+
+  .display-info__item.display-info__item--contacts  {
+    padding-left: 10px;
+  }
+
+  .display-info__item--actions {
+    padding-left: 100px;
+  }
+
+  .clients__edit {
+    margin-bottom: 10px;
+  }
+}
