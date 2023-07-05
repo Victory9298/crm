@@ -92,7 +92,6 @@ export const createClientItem = (data) => {
     if (data.lastName !== undefined) {
       form.inputLastName.value = data.lastName;
     }
-
     form.inputBirthDate.value = data.clientBirthDate;
 
     let contactsBlock = form.contactsBlock;

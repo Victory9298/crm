@@ -79,6 +79,7 @@ function makeClientFromData(data) {
 /**
  * Возвращает список клиентов из базы данных
  * @param {{ search: string }} [params] - Поисковая строка
+<<<<<<< HEAD
  * @returns {{ id: string, name: string, surname: string, lastName: string, clientBirthDate: date, contacts: object[] }[]} Массив клиентов
  */
 function getClientList(params = {}) {
@@ -132,6 +133,7 @@ async function pushDataToKafka(data) {
     ],
   })
 }
+
 
 /**
  * Возвращает объект клиента по его ID
@@ -264,10 +266,12 @@ module.exports = createServer(async (req, res) => {
       console.log('Нажмите CTRL+C, чтобы остановить сервер');
       console.log('Доступные методы:');
       console.log(`GET ${URI_PREFIX} - получить список клиентов, в query параметр search можно передать поисковый запрос`);
+
       console.log(`POST ${URI_PREFIX} - создать клиента, в теле запроса нужно передать объект { name: string, surname: string, lastName?: string, clientBirthDate: date, contacts?: object[] }`);
       console.log(`\tcontacts - массив объектов контактов вида { type: string, value: string }`);
       console.log(`GET ${URI_PREFIX}/{id} - получить клиента по его ID`);
       console.log(`PATCH ${URI_PREFIX}/{id} - изменить клиента с ID, в теле запроса нужно передать объект { name?: string, surname?: string, lastName?: string, clientBirthDate: date, contacts?: object[] }`);
+
       console.log(`\tcontacts - массив объектов контактов вида { type: string, value: string }`);
       console.log(`DELETE ${URI_PREFIX}/{id} - удалить клиента по ID`);
     }

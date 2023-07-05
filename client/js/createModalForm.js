@@ -36,6 +36,7 @@ export const createClientsForm = () => {
   formFloatingSurname.classList.add('form-floating');
   formFloatingLastName.classList.add('form-floating');
   formFloatingBirthDate.classList.add('form-floating');
+
   inputName.classList.add('modal__input');
   inputSurname.classList.add('modal__input');
   inputLastName.classList.add('modal__input');
@@ -46,6 +47,7 @@ export const createClientsForm = () => {
   requiredSurname.classList.add('modal__label');
   inputBirthDate.classList.add('modal__input');
   labelBirthDate.classList.add('modal__label');
+
   addContactBtn.classList.add('modal__btn-contact', 'modal__btn-contact--active');
   modalText.classList.add('modal__text');
   saveBtn.classList.add('modal__btn-save', 'btn-reset', 'site-btn');
@@ -66,6 +68,7 @@ export const createClientsForm = () => {
   inputName.placeholder = 'Имя';
   inputSurname.placeholder = 'Фамилия';
   inputLastName.placeholder = 'Отчество';
+
   inputBirthDate.id = 'floatingBirthDate';
   inputBirthDate.type = 'date';
   inputBirthDate.placeholder = 'Дата рождения;'
@@ -75,6 +78,7 @@ export const createClientsForm = () => {
   labelSurname.textContent = 'Фамилия';
   labelLastName.textContent = 'Отчество';
   labelBirthDate.textContent = 'Дата рождения';
+
   addContactBtn.textContent = 'Добавить контакт';
   modalText.textContent = "Ошибка: новая модель организационной деятельности предполагает независимые способы реализации поставленных обществом задач!"
   saveBtn.textContent = 'Сохранить';
@@ -90,6 +94,7 @@ export const createClientsForm = () => {
   formFloatingSurname.append(inputSurname, labelSurname);
   formFloatingLastName.append(inputLastName, labelLastName);
   formFloatingBirthDate.append(inputBirthDate, labelBirthDate);
+
   contactsBlock.append(addContactBtn);
 
   form.append(
