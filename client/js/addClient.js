@@ -34,6 +34,7 @@ export const addClientModal = () => {
     clientObj.name = createForm.inputName.value;
     clientObj.surname = createForm.inputSurname.value;
     clientObj.lastName = createForm.inputLastName.value;
+    clientObj.clientBirthDate = createForm.inputBirthDate.value;
     clientObj.contacts = contacts;
 
     document.getElementById('modal__btn-save').style = "background-image: url('../img/loadSave.svg'); background-repeat: 'no-repeat'";

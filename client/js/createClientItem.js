@@ -12,6 +12,7 @@ export const createClientItem = (data) => {
   const clientName = document.createElement('span');
   const clientSurname = document.createElement('span');
   const clientLastName = document.createElement('span');
+  const clientBirthDate = document.createElement('td');
   const clientCreated = document.createElement('td');
   const createDate = document.createElement('span');
   const createdTime = document.createElement('span');
@@ -32,6 +33,7 @@ export const createClientItem = (data) => {
   clientName.classList.add('clients__name');
   clientSurname.classList.add('clients__surname');
   clientLastName.classList.add('clients__lastname');
+  clientBirthDate.classList.add('clients_birthDate')
   clientCreated.classList.add('clients__created');
   createDate.classList.add('created__date');
   createdTime.classList.add('created__time');
@@ -91,6 +93,8 @@ export const createClientItem = (data) => {
       form.inputLastName.value = data.lastName;
     }
 
+    form.inputBirthDate.value = data.clientBirthDate;
+
     let contactsBlock = form.contactsBlock;
 
     const contactsItems = document.getElementsByClassName('contact');
@@ -148,10 +152,12 @@ export const createClientItem = (data) => {
       clientObj.id = data.id;
       clientObj.createdAt = data.createdAt;
       clientObj.updatedAt = data.updatedAt;
+      clientObj.clientBirthDate = data.clientBirthDate;
 
       data.name = form.inputName.value;
       data.surname = form.inputSurname.value;
       data.lastName = form.inputLastName.value;
+      data.clientBirthDate = form.inputBirthDate.value;
       data.contacts = contacts;
 
       await editClientItem(data.id, clientObj).then(() => {
@@ -207,6 +213,7 @@ export const createClientItem = (data) => {
   createdTime.textContent = formatTime(data.createdAt);
   changedDate.textContent = formatDate(data.updatedAt);
   changedTime.textContent = formatTime(data.updatedAt);
+  clientBirthDate.textContent = formatTime(data.clientBirthDate);
 
   clientFullName.append(clientName, clientSurname, clientLastName);
   clientCreated.append(createDate, createdTime);

@@ -14,6 +14,8 @@ export const createClientsForm = () => {
   const labelLastName = document.createElement('label');
   const requiredName = document.createElement('span');
   const requiredSurname = document.createElement('span');
+  const inputBirthDate = document.createElement('input');
+  const labelBirthDate = document.createElement('label');
   const addContactBtn = document.createElement('button');
   const contactBtnSvgDefault = document.createElement('span');
   const contactBtnSvgHover = document.createElement('span');
@@ -24,6 +26,7 @@ export const createClientsForm = () => {
   const formFloatingName = document.createElement('div');
   const formFloatingSurname = document.createElement('div');
   const formFloatingLastName = document.createElement('div');
+  const formFloatingBirthDate = document.createElement('div');
 
   modalTitle.classList.add('modal__title');
   modalId.classList.add('modal__id');
@@ -32,6 +35,7 @@ export const createClientsForm = () => {
   formFloatingName.classList.add('form-floating');
   formFloatingSurname.classList.add('form-floating');
   formFloatingLastName.classList.add('form-floating');
+  formFloatingBirthDate.classList.add('form-floating');
   inputName.classList.add('modal__input');
   inputSurname.classList.add('modal__input');
   inputLastName.classList.add('modal__input');
@@ -40,6 +44,8 @@ export const createClientsForm = () => {
   labelLastName.classList.add('modal__label');
   requiredName.classList.add('modal__label');
   requiredSurname.classList.add('modal__label');
+  inputBirthDate.classList.add('modal__input');
+  labelBirthDate.classList.add('modal__label');
   addContactBtn.classList.add('modal__btn-contact', 'modal__btn-contact--active');
   modalText.classList.add('modal__text');
   saveBtn.classList.add('modal__btn-save', 'btn-reset', 'site-btn');
@@ -60,11 +66,15 @@ export const createClientsForm = () => {
   inputName.placeholder = 'Имя';
   inputSurname.placeholder = 'Фамилия';
   inputLastName.placeholder = 'Отчество';
+  inputBirthDate.id = 'floatingBirthDate';
+  inputBirthDate.type = 'date';
+  inputBirthDate.placeholder = 'Дата рождения;'
 
   modalTitle.textContent = 'Новый клиент';
   labelName.textContent = 'Имя';
   labelSurname.textContent = 'Фамилия';
   labelLastName.textContent = 'Отчество';
+  labelBirthDate.textContent = 'Дата рождения';
   addContactBtn.textContent = 'Добавить контакт';
   modalText.textContent = "Ошибка: новая модель организационной деятельности предполагает независимые способы реализации поставленных обществом задач!"
   saveBtn.textContent = 'Сохранить';
@@ -79,12 +89,14 @@ export const createClientsForm = () => {
   formFloatingName.append(inputName, labelName);
   formFloatingSurname.append(inputSurname, labelSurname);
   formFloatingLastName.append(inputLastName, labelLastName);
+  formFloatingBirthDate.append(inputBirthDate, labelBirthDate);
   contactsBlock.append(addContactBtn);
 
   form.append(
     formFloatingName,
     formFloatingSurname,
     formFloatingLastName,
+    formFloatingBirthDate,
     contactsBlock,
     modalText,
     saveBtn,
@@ -135,9 +147,11 @@ export const createClientsForm = () => {
     inputName,
     inputSurname,
     inputLastName,
+    inputBirthDate,
     labelName,
     labelSurname,
     labelLastName,
+    labelBirthDate,
     contactsBlock,
     addContactBtn,
     saveBtn,

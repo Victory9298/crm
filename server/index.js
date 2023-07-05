@@ -43,7 +43,7 @@ function drainJson(req) {
  * Проверяет входные данные и создаёт из них корректный объект клиента
  * @param {Object} data - Объект с входными данными
  * @throws {ApiError} Некорректные данные в аргументе (statusCode 422)
- * @returns {{ name: string, surname: string, lastName: string, contacts: object[] }} Объект клиента
+ * @returns {{ name: string, surname: string, lastName: string, clientBirthData: date, contacts: object[] }} Объект клиента
  */
 function makeClientFromData(data) {
   const errors = [];
@@ -57,6 +57,7 @@ function makeClientFromData(data) {
     name: asString(data.name),
     surname: asString(data.surname),
     lastName: asString(data.lastName),
+    clientBirthData: asString(data.clientBirthData),
     contacts: Array.isArray(data.contacts) ? data.contacts.map(contact => ({
       type: asString(contact.type),
       value: asString(contact.value),
@@ -78,7 +79,7 @@ function makeClientFromData(data) {
 /**
  * Возвращает список клиентов из базы данных
  * @param {{ search: string }} [params] - Поисковая строка
- * @returns {{ id: string, name: string, surname: string, lastName: string, contacts: object[] }[]} Массив клиентов
+ * @returns {{ id: string, name: string, surname: string, lastName: string, clientBirthDate: date, contacts: object[] }[]} Массив клиентов
  */
 function getClientList(params = {}) {
   const clients = JSON.parse(readFileSync(DB_FILE) || '[]');
@@ -88,6 +89,7 @@ function getClientList(params = {}) {
       client.name,
       client.surname,
       client.lastName,
+      client.clientBirthDate,
       ...client.contacts.map(({ value }) => value)
     ]
       .some(str => str.toLowerCase().includes(search))
@@ -100,7 +102,7 @@ function getClientList(params = {}) {
  * Создаёт и сохраняет клиента в базу данных
  * @throws {ApiError} Некорректные данные в аргументе, клиент не создан (statusCode 422)
  * @param {Object} data - Данные из тела запроса
- * @returns {{ id: string, name: string, surname: string, lastName: string, contacts: object[], createdAt: string, updatedAt: string }} Объект клиента
+ * @returns {{ id: string, name: string, surname: string, lastName: string, clientBirthDate: date, contacts: object[], createdAt: string, updatedAt: string }} Объект клиента
  */
 function createClient(data) {
   const newItem = makeClientFromData(data);
@@ -135,7 +137,7 @@ async function pushDataToKafka(data) {
  * Возвращает объект клиента по его ID
  * @param {string} itemId - ID клиента
  * @throws {ApiError} Клиент с таким ID не найден (statusCode 404)
- * @returns {{ id: string, name: string, surname: string, lastName: string, contacts: object[], createdAt: string, updatedAt: string }} Объект клиента
+ * @returns {{ id: string, name: string, surname: string, lastName: string, clientBirthDate:date, contacts: object[], createdAt: string, updatedAt: string }} Объект клиента
  */
 function getClient(itemId) {
   const client = getClientList().find(({ id }) => id === itemId);
@@ -146,7 +148,7 @@ function getClient(itemId) {
 /**
  * Изменяет клиента с указанным ID и сохраняет изменения в базу данных
  * @param {string} itemId - ID изменяемого клиента
- * @param {{ name?: string, surname?: string, lastName?: string, contacts?: object[] }} data - Объект с изменяемыми данными
+ * @param {{ name?: string, surname?: string, lastName?: string, clientBirthDate: date, contacts?: object[] }} data - Объект с изменяемыми данными
  * @throws {ApiError} Клиент с таким ID не найден (statusCode 404)
  * @throws {ApiError} Некорректные данные в аргументе (statusCode 422)
  * @returns {{ id: string, name: string, surname: string, lastName: string, contacts: object[], createdAt: string, updatedAt: string }} Объект клиента
@@ -262,10 +264,10 @@ module.exports = createServer(async (req, res) => {
       console.log('Нажмите CTRL+C, чтобы остановить сервер');
       console.log('Доступные методы:');
       console.log(`GET ${URI_PREFIX} - получить список клиентов, в query параметр search можно передать поисковый запрос`);
-      console.log(`POST ${URI_PREFIX} - создать клиента, в теле запроса нужно передать объект { name: string, surname: string, lastName?: string, contacts?: object[] }`);
+      console.log(`POST ${URI_PREFIX} - создать клиента, в теле запроса нужно передать объект { name: string, surname: string, lastName?: string, clientBirthDate: date, contacts?: object[] }`);
       console.log(`\tcontacts - массив объектов контактов вида { type: string, value: string }`);
       console.log(`GET ${URI_PREFIX}/{id} - получить клиента по его ID`);
-      console.log(`PATCH ${URI_PREFIX}/{id} - изменить клиента с ID, в теле запроса нужно передать объект { name?: string, surname?: string, lastName?: string, contacts?: object[] }`);
+      console.log(`PATCH ${URI_PREFIX}/{id} - изменить клиента с ID, в теле запроса нужно передать объект { name?: string, surname?: string, lastName?: string, clientBirthDate: date, contacts?: object[] }`);
       console.log(`\tcontacts - массив объектов контактов вида { type: string, value: string }`);
       console.log(`DELETE ${URI_PREFIX}/{id} - удалить клиента по ID`);
     }
